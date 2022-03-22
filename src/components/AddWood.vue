@@ -1,4 +1,5 @@
 <template>
+  <side-menu :red="this.store.red" :green="this.store.green" :blue="this.store.blue"></side-menu>
   <div>
     <h3>Add wood to the fire</h3>
     <div
@@ -7,7 +8,7 @@
       @drop="onDrop()"
       @dragover.prevent
       @dragenter.prevent
-    ><img alt="fire" src="../assets/flame.svg"></div>
+    ><img alt="fire" src="../assets/friend-flame-blue.svg"></div>
 
     <div
       class="fire"
@@ -38,9 +39,14 @@
 
 <script>
 import axios from 'axios';
+import SideMenu from '../components/SideMenu.vue'
+import { store } from '../store'
 
 export default {
   name: 'AddWood',
+  components: {
+    SideMenu,
+  },
   data() {
     return {
       on: false,
@@ -57,6 +63,7 @@ export default {
       },
       logInFire: false,
       showSuccess: false,
+      store,
     }
   },
 
@@ -111,26 +118,6 @@ h3 {
 
 .log {
   padding: 20px;
-}
-
-.visible {
-  display: block;
-}
-
-.hidden {
-  display: none;
-}
-
-.success {
-  background-color: #FFDADA;
-  width: 300px;
-  height: 200px;
-  padding: 20px;
-  border-radius:10px;
-  border-width: 0;
-  position: absolute;
-  top: calc(50vh - 100px);
-  left: calc(50vw - 150px);
 }
 
 .drag-here {

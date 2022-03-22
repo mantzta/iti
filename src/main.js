@@ -3,4 +3,7 @@ import App from './App.vue'
 import router from './router'
 import './assets/css/main.css';
 
-createApp(App).use(router).mount('#app')
+const myApp = createApp(App)
+
+myApp.use(router)
+myApp.mount('#app')

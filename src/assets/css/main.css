@@ -34,3 +34,84 @@ button:active {
 a {
 	color: #E8505B;
 }
+
+.menu {
+	cursor: pointer;
+  }
+  
+  .menu-open {
+	top: 0;
+	left: 0;
+	width: 50vw;
+	height: 100vh;
+	position: fixed;
+	background-color: #E8505B;
+	transition: 0.5s;
+	z-index: 100;
+  }
+  
+  .menu-closed {
+	top: 0;
+	left: 0;
+	width: 0;
+	height: 100vh;
+	position: fixed;
+	overflow-y: hidden;
+	transition: 0.5s;
+  }
+  
+  .material-icons.closebtn {
+	color: #ffffff;
+  }
+  
+  .material-icons.closebtn-visible {
+	opacity: 1;
+	transition: 0.5s;
+  }
+  
+  .material-icons.closebtn-hidden {
+	opacity: 0;
+	transition: 0.5s;
+  }
+  
+  .menu-content {
+	color: #ffffff;
+  }
+  
+  .menu-content a {
+	color: #ffffff;
+	text-decoration: none;
+  }
+  
+  ul {
+	list-style-type: none;
+	padding: 0;
+  }
+  
+  li {
+	margin: 30px 10px;
+  }
+
+  .margin {
+	margin: 20px;
+  }
+
+  .visible {
+	display: block;
+  }
+  
+  .hidden {
+	display: none;
+  }
+
+  .success {
+	background-color: #FFDADA;
+	width: 300px;
+	height: 200px;
+	padding: 20px;
+	border-radius:10px;
+	border-width: 0;
+	position: absolute;
+	top: calc(50vh - 100px);
+	left: calc(50vw - 150px);
+  }

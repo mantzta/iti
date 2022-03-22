@@ -3,13 +3,16 @@ import StartFire from '../components/StartFire.vue'
 import ChooseFeeling from '../components/ChooseFeeling.vue'
 import AddWood from '../components/AddWood.vue'
 import FireSettings from '../components/FireSettings.vue'
+import FriendsFires from '../components/FriendsFires.vue'
+import SignIn from '../components/SignIn.vue'
 
 const routes = [
-  { path: '/', component: StartFire },
-  { path: '/start-fire', component: StartFire },
+  { path: '/', component: SignIn },
+  { path: '/start-fire/:red/:green/:blue', component: StartFire, props: true},
   { path: '/choose-feeling', component: ChooseFeeling },
   { path: '/add-wood', component: AddWood },
   { path: '/fire-settings', component: FireSettings },
+  { path: '/friends-fires', component: FriendsFires },
 ]
 
 const router = createRouter({
