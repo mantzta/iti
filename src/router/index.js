@@ -5,6 +5,7 @@ import AddWood from '../components/AddWood.vue'
 
 const routes = [
   { path: '/', component: StartFire },
+  { path: '/start-fire', component: StartFire },
   { path: '/choose-feeling', component: ChooseFeeling },
   { path: '/add-wood', component: AddWood },
 ]
