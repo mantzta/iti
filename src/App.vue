@@ -6,7 +6,7 @@
       <ul class="menu-content">
           <li><router-link to="/" @click="closeMenu">My fire</router-link></li>
           <li><router-link to="/friends" @click="closeMenu">Friends' fires</router-link></li>
-          <li><router-link to="/settings" @click="closeMenu">Fire settings</router-link></li>
+          <li><router-link to="/fire-settings" @click="closeMenu">Fire settings</router-link></li>
       </ul>
     </div>
   </div>
