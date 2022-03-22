@@ -1,0 +1,36 @@
+@import url('https://fonts.googleapis.com/icon?family=Material+Icons');
+
+body {
+    font-family: Avenir, Helvetica, Arial, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #FFFBFB;
+    color: #E8505B;
+}
+
+button {
+	background-color:#e56e6e;
+    border-radius:30px;
+    border-width: 0;
+	display:inline-block;
+	cursor:pointer;
+	color:#ffffff;
+	font-size:17px;
+	padding:16px 31px;
+	text-decoration:none;
+}
+button:hover {
+	background-color:#db4b4b;
+}
+button:active {
+	position:relative;
+	top:1px;
+}
+
+.material-icons {
+    color: #000000;
+}
+
+a {
+	color: #E8505B;
+}
