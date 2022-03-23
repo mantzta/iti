@@ -1,5 +1,8 @@
 <template>
-<side-menu :red="store.red" :green="store.green" :blue="store.blue"></side-menu>
+  <side-menu :red="store.red" :green="store.green" :blue="store.blue"></side-menu>
+
+  <get-wood></get-wood>
+
   <div>
     <component :is="'style'">
     :root {
@@ -45,6 +48,7 @@
 import axios from 'axios';
 import Slider from '@vueform/slider'
 import SideMenu from '../components/SideMenu.vue'
+import GetWood from '../components/GetWood.vue'
 import { store } from '../store'
 
 export default {
@@ -52,6 +56,7 @@ export default {
   components: {
     Slider,
     SideMenu,
+    GetWood,
   },
   data() {
     return {

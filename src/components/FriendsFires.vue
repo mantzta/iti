@@ -1,5 +1,8 @@
 <template>
   <side-menu :red="this.store.red" :green="this.store.green" :blue="this.store.blue"></side-menu>
+
+  <get-wood></get-wood>
+
   <div>
     <div>
       <input type="text" />
@@ -33,11 +36,13 @@
 <script>
 import SideMenu from '../components/SideMenu.vue'
 import { store } from '../store'
+import GetWood from '../components/GetWood.vue'
 
 export default {
   name: 'FriendsFires',
    components: {
     SideMenu,
+    GetWood,
   },
   data() {
     return {
