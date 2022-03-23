@@ -60,9 +60,9 @@ export default {
         v: true,
         seg: [
             {
-              "start": 0,
-              "stop": 5,
-              "bri": 255,
+              start: 0,
+              stop: 30,
+              bri: 255,
             },
           ],
       },
@@ -75,9 +75,7 @@ export default {
   methods: {
     changeFire() {
       console.log("change fire")
-      axios.post("http://" + store.ip + "/json/state", {
-        body: this.postBody,
-      })
+      axios.post("http://" + store.ip + "/json/state", this.postBody)
       .then()
       .catch(e => {
         this.errors.push(e)
@@ -90,6 +88,7 @@ export default {
     onDrop() {
       console.log("added log")
       this.logInFire = true
+      // this.changeFire()
 
       setTimeout(() => {
         this.showSuccess = true

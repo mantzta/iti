@@ -22,9 +22,14 @@ export default {
         v: true,
         seg: [
             {
-              "start": 0,
-              "stop": 5,
-              "bri": 255,
+              start: 0,
+              stop: 30,
+              bri: 255,
+              col: [
+              [232, 80, 91, 1],
+              [0, 0, 0, 0],
+              [0, 0, 0, 0]
+            ],
             },
           ],
       },
@@ -35,10 +40,27 @@ export default {
   methods: {
     sendWood() {
       console.log("sends wood now to fire")
-      axios.post("http://" + store.ip + "/json/state", {
-        body: this.postBody,
+      axios.post("http://" + store.ip + "/json/state", this.postBody)
+      .then(() => {
+        setTimeout(() => {
+          const postBody = {
+            v: true,
+            seg: [
+              {
+                start: 0,
+                stop: 15,
+                bri: 50,
+                col: [
+                  [this.store.red, this.store.green, this.store.blue, 1],
+                  [0, 0, 0, 0],
+                  [0, 0, 0, 0]
+                ],
+              },
+        ],
+          }
+          axios.post("http://" + store.ip + "/json/state", postBody)
+        }, 60000)
       })
-      .then()
       .catch(e => {
         this.errors.push(e)
       })
@@ -52,9 +74,9 @@ export default {
   async created() {
     if (store.triggerWood) {
       setTimeout(() => {
-        this.sendWood()
-
         this.show = true
+
+        this.sendWood()
       }, 15000)
     }
   }

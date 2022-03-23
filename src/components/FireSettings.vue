@@ -78,17 +78,8 @@ export default {
         direction: 'rtl',
         max: 255,
       },
-      on: false,
       errors: [],
       store,
-      postBody: {
-        v: true,
-        "col": [
-          [255, 160, 0, 0],
-          [0, 0, 0, 0],
-          [0, 0, 0, 0],
-        ],
-      },
     }
   },
 
@@ -97,12 +88,6 @@ export default {
       this.store.red = this.red.value || this.store.red
       this.store.green = this.green.value || this.store.green
       this.store.blue = this.blue.value || this.store.blue
-
-      this.postBody.col = [
-        [this.store.red, this.store.green, this.store.blue, 1],
-        [this.store.red, this.store.green, this.store.blue, 1],
-        [this.store.red, this.store.green, this.store.blue, 1],
-      ]
 
       if (this.store.feeling == "happy") {
         this.store.happy.red = this.store.red
@@ -128,9 +113,23 @@ export default {
         this.store.annoyed.blue = this.store.blue
       }
 
-      axios.post("http://" + store.ip + "/json/state", {
-        body: this.postBody,
-      })
+      const postBody = {
+        v: true,
+        seg: [
+          {
+            start: 0,
+            stop: 30,
+            col: [
+              [this.store.red, this.store.green, this.store.blue, 1],
+              [0, 0, 0, 0],
+              [0, 0, 0, 0]
+            ],
+          },
+        ],
+      }
+
+      console.log("change fire")
+      axios.post("http://" + store.ip + "/json/state", postBody)
       .then()
       .catch(e => {
         this.errors.push(e)
@@ -149,20 +148,10 @@ export default {
       if (color == "blue") {
         this.blue.value = event
       }
-
-      console.log("change fire",color,event)
+      
       this.changeFire()
     },
   },
-
-  async created() {
-    try {
-      const response = await axios.get("http://" + store.ip + "/json/state")
-      this.on = response.on
-    } catch (e) {
-      this.errors.push(e)
-    }
-  }
 }
 </script>
 

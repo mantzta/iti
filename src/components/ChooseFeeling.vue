@@ -8,7 +8,7 @@
     <div class="bottom">
       <div class="row">
         <router-link :to="'/start-fire/' + this.store.happy.red + '/' + this.store.happy.green + '/' + this.store.happy.blue" @click="changeFeeling('happy')">
-          <div class="feeling" @click="changeFire">
+          <div class="feeling">
             
             <svg width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
               <circle cx="30.5" cy="30.5" r="27.5" fill="#FFEEEE" :stroke="'rgb(' + this.store.happy.red + ',' + this.store.happy.green + ',' + this.store.happy.blue + ')'" stroke-opacity="0.2" stroke-width="5"/>
@@ -90,29 +90,31 @@ export default {
       on: false,
       errors: [],
       store,
-      postBody: {
-        v: true,
-        seg: [
-          {
-            "start": 0,
-            "stop": 5,
-            "col": [
-              [255, 160, 0, 0],
-              [0, 0, 0, 0],
-              [0, 0, 0, 0]
-            ],
-          },
-        ],
-      }
     }
   },
 
   methods: {
     changeFire() {
       console.log("change fire")
-      axios.post("http://" + store.ip + "/json/state", {
-        body: this.postBody,
-      })
+
+      const postBody = {
+        on: true,
+        v: true,
+        seg: [
+          {
+            start: 0,
+            stop: 15,
+            bri: 50,
+            col: [
+              [this.store.red, this.store.green, this.store.blue, 1],
+              [0, 0, 0, 0],
+              [0, 0, 0, 0]
+            ],
+          },
+        ],
+      }
+
+      axios.post("http://" + store.ip + "/json/state", postBody)
       .then()
       .catch(e => {
         this.errors.push(e)
@@ -144,6 +146,8 @@ export default {
         this.store.green = this.store.annoyed.green
         this.store.blue = this.store.annoyed.blue
       }
+
+      this.changeFire()
 
     }
   },

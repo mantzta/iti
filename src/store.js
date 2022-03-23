@@ -26,6 +26,6 @@ export const store = reactive({
   },
   feeling: null,
   on: false,
-  ip: "[WLED-IP]",
+  ip: "192.168.178.99",
   triggerWood: true,
 })
