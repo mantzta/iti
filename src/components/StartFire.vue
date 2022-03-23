@@ -83,7 +83,7 @@ export default {
     toggleFire() {
       console.log("toggle fire", this.red, this.green, this.blue)
       this.store.on = !this.store.on;
-      axios.post(`http://[WLED-IP]/json/state`, {
+      axios.post("http://" + store.ip + "/json/state", {
         body: { "on": !this.store.on },
       })
       .then(response => {
@@ -100,7 +100,7 @@ export default {
 
   async created() {
     try {
-      const response = await axios.get(`http://[WLED-IP]/json/state`)
+      const response = await axios.get("http://" + store.ip + "/json/state")
       this.store.on = response.on
     } catch (e) {
       this.errors.push(e)
@@ -109,7 +109,7 @@ export default {
     setTimeout(() => {
       this.showSuccess = true;
 
-      axios.post(`http://[WLED-IP]/json/state`, {
+      axios.post("http://" + store.ip + "/json/state", {
         body: this.postBody,
       })
       .then()

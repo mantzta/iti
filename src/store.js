@@ -26,4 +26,5 @@ export const store = reactive({
   },
   feeling: null,
   on: false,
+  ip: "[WLED-IP]",
 })

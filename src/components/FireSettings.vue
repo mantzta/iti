@@ -123,7 +123,7 @@ export default {
         this.store.annoyed.blue = this.store.blue
       }
 
-      axios.post(`http://[WLED-IP]/json/state`, {
+      axios.post("http://" + store.ip + "/json/state", {
         body: this.postBody,
       })
       .then()
@@ -151,7 +151,7 @@ export default {
 
   async created() {
     try {
-      const response = await axios.get(`http://[WLED-IP]/json/state`)
+      const response = await axios.get("http://" + store.ip + "/json/state")
       this.on = response.on
     } catch (e) {
       this.errors.push(e)

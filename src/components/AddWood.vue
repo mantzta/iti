@@ -8,7 +8,7 @@
       @drop="onDrop()"
       @dragover.prevent
       @dragenter.prevent
-    ><img alt="fire" src="../assets/friend-flame-blue.svg"></div>
+    ><img alt="fire" src="../assets/flame.svg"></div>
 
     <div
       class="fire"
@@ -70,7 +70,7 @@ export default {
   methods: {
     changeFire() {
       console.log("change fire")
-      axios.post(`http://[WLED-IP]/json/state`, {
+      axios.post("http://" + store.ip + "/json/state", {
         body: this.postBody,
       })
       .then()
@@ -97,7 +97,7 @@ export default {
 
   async created() {
     try {
-      const response = await axios.get(`http://[WLED-IP]/json/state`)
+      const response = await axios.get("http://" + store.ip + "/json/state")
       this.on = response.on
     } catch (e) {
       this.errors.push(e)
