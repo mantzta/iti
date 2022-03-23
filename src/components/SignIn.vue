@@ -101,8 +101,4 @@ input::placeholder {
   color: #FFFBFB;
 }
 
-.forgot a:hover {
-  text-decoration: none;
-}
-
 </style>

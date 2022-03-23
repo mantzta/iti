@@ -115,3 +115,7 @@ a {
 	top: calc(50vh - 100px);
 	left: calc(50vw - 150px);
   }
+
+  a:hover {
+	text-decoration: none;
+  }

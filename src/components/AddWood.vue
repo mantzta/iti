@@ -88,7 +88,7 @@ export default {
 
       setTimeout(() => {
         this.showSuccess = true
-      }, 2000)
+      }, 800)
     },
     hideSuccess() {
       this.showSuccess = false
