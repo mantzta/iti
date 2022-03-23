@@ -1,5 +1,8 @@
 <template>
   <side-menu :red="this.redM || this.red" :green="this.greenM || this.green" :blue="this.blueM || this.blue"></side-menu>
+  
+  <get-wood></get-wood>
+  
   <div>
     <component :is="'style'">
     :root {
@@ -7,7 +10,7 @@
       --flame-circle: rgb({{ red }}, {{ green }}, {{ blue }}, 0.2);
     }
     </component>
-    <div :class="{'show':!store.on, 'hidden':store.on}">
+    <div :class="{'visible':!store.on, 'hidden':store.on}">
       <h3>Your fire is turned off!</h3>
 
       <router-link to="/choose-feeling">
@@ -17,7 +20,7 @@
       </router-link>
     </div>
 
-    <div :class="{'show':store.on, 'hidden':!store.on}">
+    <div :class="{'visible':store.on, 'hidden':!store.on}">
       <h3>You are feeling {{ store.feeling }}</h3>
       
       <div class="fire" @click="toggleFire">
@@ -35,22 +38,19 @@
       <router-link to="/friends-fires"><button>Add wood to a friend's fire</button></router-link>
     </div>
   </div>
-
-  <div class="success" :class="{'visible':showSuccess, 'hidden':!showSuccess}">
-      <h3>Sarah added some wood to your fire for the next 10 minutes</h3>
-      <button @click="hideSuccess">Great!</button>
-  </div>
 </template>
 
 <script>
 import axios from 'axios';
 import SideMenu from '../components/SideMenu.vue'
+import GetWood from '../components/GetWood.vue'
 import { store } from '../store'
 
 export default {
   name: 'StartFire',
   components: {
     SideMenu,
+    GetWood,
   },
   props: {
     red: Number,
@@ -65,17 +65,6 @@ export default {
       redM: null,
       greenM: null,
       blueM: null,
-      showSuccess: false,
-      postBody: {
-        v: true,
-        seg: [
-            {
-              "start": 0,
-              "stop": 5,
-              "bri": 255,
-            },
-          ],
-      },
     }
   },
 
@@ -93,9 +82,6 @@ export default {
         this.errors.push(e)
       })
     },
-    hideSuccess() {
-      this.showSuccess = false
-    },
   },
 
   async created() {
@@ -105,18 +91,6 @@ export default {
     } catch (e) {
       this.errors.push(e)
     }
-
-    setTimeout(() => {
-      this.showSuccess = true;
-
-      axios.post("http://" + store.ip + "/json/state", {
-        body: this.postBody,
-      })
-      .then()
-      .catch(e => {
-        this.errors.push(e)
-      })
-    }, 20000)
   }
 }
 </script>

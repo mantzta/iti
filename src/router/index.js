@@ -5,6 +5,7 @@ import AddWood from '../components/AddWood.vue'
 import FireSettings from '../components/FireSettings.vue'
 import FriendsFires from '../components/FriendsFires.vue'
 import SignIn from '../components/SignIn.vue'
+import OurSettings from '../components/OurSettings.vue'
 
 const routes = [
   { path: '/', component: SignIn },
@@ -13,6 +14,7 @@ const routes = [
   { path: '/add-wood', component: AddWood },
   { path: '/fire-settings', component: FireSettings },
   { path: '/friends-fires', component: FriendsFires },
+  { path: '/settings', component: OurSettings },
 ]
 
 const router = createRouter({

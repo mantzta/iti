@@ -7,6 +7,7 @@
           <li><router-link :to="'/start-fire/' + this.red + '/' + this.green + '/' + this.blue" @click="closeMenu">My fire</router-link></li>
           <li><router-link to="/friends-fires" @click="closeMenu">Friends' fires</router-link></li>
           <li :class="{'hide': !store.on}"><router-link to="/fire-settings" @click="closeMenu">Fire settings</router-link></li>
+          <li><router-link to="/settings" @click="closeMenu">Settings</router-link></li>
           <li><router-link to="/" @click="closeMenu">Logout</router-link></li>
       </ul>
     </div>

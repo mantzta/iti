@@ -1,5 +1,6 @@
 <template>
   <side-menu :red="this.store.red" :green="this.store.green" :blue="this.store.blue"></side-menu>
+  <get-wood></get-wood>
   <div>
     <h3>How do you feel?</h3>
     <div class="fire"><img alt="fire" src="../assets/flame.svg"></div>
@@ -75,12 +76,14 @@
 <script>
 import axios from 'axios';
 import SideMenu from '../components/SideMenu.vue'
+import GetWood from '../components/GetWood.vue'
 import { store } from '../store'
 
 export default {
   name: 'ChooseFeeling',
   components: {
     SideMenu,
+    GetWood,
   },
   data() {
     return {
