@@ -35,9 +35,9 @@
       </div>
     </div>
 
-    <router-link :to="'/start-fire/' + store.red + '/' + store.green + '/' + store.blue">
+    <!--<router-link :to="'/start-fire/' + store.red + '/' + store.green + '/' + store.blue">
         <button @click="changeFire">Change color</button>
-      </router-link>
+      </router-link>-->
   </div>
 </template>
 
@@ -146,6 +146,7 @@ export default {
       }
 
       console.log("change fire",color,event)
+      this.changeFire()
     },
   },
 
