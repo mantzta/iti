@@ -1,6 +1,6 @@
 <template>
 
-<div class="success" :class="{'visible':store.triggerWood, 'hidden':!store.triggerWood}">
+<div class="success" :class="{'visible':show, 'hidden':!show}">
   <h3>Sarah added some wood to your fire for the next 10 minutes</h3>
   <button @click="hideSuccess">Great!</button>
 </div>
@@ -28,6 +28,7 @@ export default {
             },
           ],
       },
+      show: false,
     }
   },
 
@@ -44,12 +45,17 @@ export default {
     },
     hideSuccess() {
       this.store.triggerWood = false
+      this.show = false
     },
   },
 
   async created() {
     if (store.triggerWood) {
-      this.sendWood()
+      setTimeout(() => {
+        this.sendWood()
+
+        this.show = true
+      }, 10000)
     }
   }
 }
