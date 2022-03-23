@@ -55,7 +55,7 @@ export default {
         this.sendWood()
 
         this.show = true
-      }, 10000)
+      }, 15000)
     }
   }
 }

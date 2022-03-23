@@ -3,8 +3,6 @@
 <side-menu :red="this.store.red" :green="this.store.green" :blue="this.store.blue"></side-menu>
 
 <input v-model="store.ip" />
-
-<div><button @click="triggerWood">Send wood now!</button></div>
   
 </template>
 
