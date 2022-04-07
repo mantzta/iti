@@ -19,13 +19,14 @@ export const store = reactive({
     green: 191,
     blue: 83,
   },
-  annoyed: {
+  stressed: {
     red: 255,
     green: 146,
     blue: 19,
   },
   feeling: null,
   on: false,
-  ip: "192.168.178.99",
-  triggerWood: true,
+  //ip: "192.168.178.99",
+  ip: "4.3.2.1",
+  triggerWood: false,
 })

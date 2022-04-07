@@ -18,21 +18,6 @@ export default {
     return {
       errors: [],
       store,
-      postBody: {
-        v: true,
-        seg: [
-            {
-              start: 0,
-              stop: 30,
-              bri: 255,
-              col: [
-              [232, 80, 91, 1],
-              [0, 0, 0, 0],
-              [0, 0, 0, 0]
-            ],
-            },
-          ],
-      },
       show: false,
     }
   },
@@ -40,7 +25,35 @@ export default {
   methods: {
     sendWood() {
       console.log("sends wood now to fire")
-      axios.post("http://" + store.ip + "/json/state", this.postBody)
+      const postBody = {
+        v: true,
+        seg: [
+          {
+              start: 0,
+              stop: 15,
+              bri: 255,
+              fx: 102,
+              col: [
+                [this.store.red, this.store.green, this.store.blue, 1],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0]
+              ],
+            },
+            {
+              start: 16,
+              stop: 30,
+              bri: 255,
+              fx: 102,
+              col: [
+                [255, 255, 255, 1],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0]
+              ],
+            },
+          ],
+      }
+
+      axios.post("http://" + store.ip + "/json/state", postBody)
       .then(() => {
         setTimeout(() => {
           const postBody = {
@@ -50,12 +63,24 @@ export default {
                 start: 0,
                 stop: 15,
                 bri: 50,
+                fx: 102,
                 col: [
                   [this.store.red, this.store.green, this.store.blue, 1],
                   [0, 0, 0, 0],
                   [0, 0, 0, 0]
                 ],
               },
+              {
+              start: 16,
+              stop: 30,
+              bri: 50,
+              fx: 102,
+              col: [
+                [0, 0, 0, 0],
+                [0, 0, 0, 0],
+                [0, 0, 0, 0]
+              ],
+            },
         ],
           }
           axios.post("http://" + store.ip + "/json/state", postBody)
@@ -66,7 +91,6 @@ export default {
       })
     },
     hideSuccess() {
-      this.store.triggerWood = false
       this.show = false
     },
   },
@@ -75,9 +99,10 @@ export default {
     if (store.triggerWood) {
       setTimeout(() => {
         this.show = true
+        this.store.triggerWood = false
 
         this.sendWood()
-      }, 15000)
+      }, 1000)
     }
   }
 }

@@ -114,6 +114,7 @@ a {
 	position: absolute;
 	top: calc(50vh - 100px);
 	left: calc(50vw - 150px);
+	z-index: 100;
   }
 
   a:hover {

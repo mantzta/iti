@@ -71,7 +71,7 @@ export default {
   methods: {
     toggleFire() {
       console.log("toggle fire")
-      this.store.on = !this.store.on;
+      this.store.on = false;
       axios.post("http://" + store.ip + "/json/state", {
         on: false, 
         v: true,
@@ -80,6 +80,7 @@ export default {
             start: 0,
             stop: 15,
             bri: 50,
+            fx: 102,
             col: [
               [this.store.red, this.store.green, this.store.blue, 1],
               [0, 0, 0, 0],
@@ -89,7 +90,6 @@ export default {
         ],
       })
       .then(response => {
-        console.log(this.store)
         this.store.on = response.data.on
       })
       .catch(e => {
@@ -100,8 +100,8 @@ export default {
 
   async created() {
     try {
-      const response = await axios.get("http://" + store.ip + "/json/state")
-      console.log("GOT A RESPONSE: ", response)
+      const response = await axios.get("http://" + store.ip + "/api//json/state")
+      console.log("GOT A RESPONSE: ", response, response.dats.on)
       this.store.on = response.data.on
     } catch (e) {
       this.errors.push(e)

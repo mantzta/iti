@@ -107,10 +107,10 @@ export default {
         this.store.surprised.blue = this.store.blue
       }
 
-      if (this.store.feeling == "annoyed") {
-        this.store.annoyed.red = this.store.red
-        this.store.annoyed.green = this.store.green
-        this.store.annoyed.blue = this.store.blue
+      if (this.store.feeling == "stressed") {
+        this.store.stressed.red = this.store.red
+        this.store.stressed.green = this.store.green
+        this.store.stressed.blue = this.store.blue
       }
 
       const postBody = {

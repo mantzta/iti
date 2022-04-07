@@ -54,18 +54,18 @@
           </div>
         </router-link>
 
-        <router-link :to="'/start-fire/' + this.store.annoyed.red + '/' + this.store.annoyed.green + '/' + this.store.annoyed.blue" @click="changeFeeling('annoyed')">
+        <router-link :to="'/start-fire/' + this.store.stressed.red + '/' + this.store.stressed.green + '/' + this.store.stressed.blue" @click="changeFeeling('stressed')">
           <div class="feeling">
             
             <svg width="61" height="61" viewBox="0 0 61 61" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="30.5" cy="30.5" r="27.5" fill="#FFEEEE" :stroke="'rgb(' + this.store.annoyed.red + ',' + this.store.annoyed.green + ',' + this.store.annoyed.blue + ')'" stroke-opacity="0.2" stroke-width="5"/>
-              <circle cx="30.5" cy="31" r="25" fill="#FFEEEE" :stroke="'rgb(' + this.store.annoyed.red + ',' + this.store.annoyed.green + ',' + this.store.annoyed.blue + ')'" stroke-width="2"/>
+              <circle cx="30.5" cy="30.5" r="27.5" fill="#FFEEEE" :stroke="'rgb(' + this.store.stressed.red + ',' + this.store.stressed.green + ',' + this.store.stressed.blue + ')'" stroke-opacity="0.2" stroke-width="5"/>
+              <circle cx="30.5" cy="31" r="25" fill="#FFEEEE" :stroke="'rgb(' + this.store.stressed.red + ',' + this.store.stressed.green + ',' + this.store.stressed.blue + ')'" stroke-width="2"/>
               <circle cx="24" cy="25" r="2" fill="black"/>
               <circle cx="35" cy="25" r="2" fill="black"/>
               <path d="M23 37H37" stroke="black"/>
             </svg>
 
-            <div>Annoyed</div>
+            <div>stressed</div>
           </div>
         </router-link>
       </div>
@@ -96,6 +96,8 @@ export default {
   methods: {
     changeFire() {
       console.log("change fire")
+
+      this.store.on = true
 
       const postBody = {
         on: true,
@@ -141,10 +143,10 @@ export default {
         this.store.blue = this.store.surprised.blue
       }
 
-      if (feeling == "annoyed") {
-        this.store.red = this.store.annoyed.red
-        this.store.green = this.store.annoyed.green
-        this.store.blue = this.store.annoyed.blue
+      if (feeling == "stressed") {
+        this.store.red = this.store.stressed.red
+        this.store.green = this.store.stressed.green
+        this.store.blue = this.store.stressed.blue
       }
 
       this.changeFire()
